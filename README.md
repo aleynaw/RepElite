@@ -17,3 +17,11 @@ This project is of interest to me mostly because I plan on using it. I think it 
 progress, especially if you happen to take long breaks in between your gym visits, as most of us had to do recently. I 
 also sometimes get quite uncreative when planning my workouts, and this will help me to stop repeating the same ones 
 every time I go just because they are the only ones I can remember.
+
+##*User Stories*
+
+- As a user, I want to be able to **select** my favourite exercises and input my working weight and PRs for said 
+workouts
+- As a user, I want to be able to **add** exercises to my workout plan for the day
+- As a user, I want to be able to **browse** exercises and view my inputted WW and PR
+- As a user, I want to be able to **generate** a random workout plan for the day, based off a category of my choice
