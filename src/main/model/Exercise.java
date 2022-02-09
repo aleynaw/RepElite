@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 
 public class Exercise {
 
@@ -11,15 +10,18 @@ public class Exercise {
 
 
     //EFFECTS: constructs an exercise with given WW and PR
-    public Exercise(String name, int workingWeight, int personalRecord) {
+    public Exercise(String name, String category, int workingWeight, int personalRecord) {
         this.name = name;
+        this.category = category;
         this.workingWeight = workingWeight;
         this.personalRecord = personalRecord;
 
     }
 
-    public Exercise(String name) {
+    //EFFECTS: constructs an exercise with just name and category (no saved WW or PR)
+    public Exercise(String name, String category) {
         this.name = name;
+        this.category = category;
     }
 
 //    public void addToCatalogue(Exercise exercise) {
@@ -29,6 +31,8 @@ public class Exercise {
 //        exerciseCatalogue.add(exercise1);
 //    }
 
+    //getters
+
     public String getExerciseName() {
         return name;
     }
@@ -37,11 +41,11 @@ public class Exercise {
         return category;
     }
 
-    public int getWorkingWeight() {
-        return workingWeight;
-    }
+//    public int getWorkingWeight() {
+//        return workingWeight;
+//    }
 
-    public int getPersonalRecord() {
-        return personalRecord;
-    }
+//    public int getPersonalRecord() {
+//        return personalRecord;
+//    }
 }
