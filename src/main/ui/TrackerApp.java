@@ -1,7 +1,10 @@
 package ui;
 
+import model.Exercise;
 import model.Profile;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -12,6 +15,16 @@ public class TrackerApp {
     private static String skillLevel;
     private static int age;
 
+
+    public TrackerApp() {
+        //init();
+        menu();
+    }
+
+    private void init() {
+        //
+    }
+
     public static void printMenu(String[] options) {
         for (String option : options) {
             System.out.println(option);
@@ -20,7 +33,7 @@ public class TrackerApp {
     }
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public static void main(String[] args) {
+    public static void menu() {
         String[] options = {"1 - Create a Profile",
                 "2 - Browse Exercises",
                 "3 - Plan a Workout",
@@ -45,14 +58,14 @@ public class TrackerApp {
                         exit(0);
                 }
             } catch (Exception ex) {
-                System.out.println("Please enter an integer value between 1 and 4" + options.length);
+                System.out.println("Please enter an integer value between 1 and " + options.length);
                 scanner.next(); //not working
             }
         }
     }
 
 
-    private static void createProfile() {
+    public static void createProfile() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
         String userName = scanner.nextLine();
@@ -86,7 +99,7 @@ public class TrackerApp {
                         break;
                 }
             } catch (Exception ex) {
-                System.out.println("Please enter an integer value between 1 and 4" + skillz.length);
+                System.out.println("Please enter an integer value between 1 and " + skillz.length);
                 scanner.next(); //not working
             }
         }
@@ -103,9 +116,34 @@ public class TrackerApp {
         System.out.println("What is your skill level?");
     }
 
-    private static void browseExercises() {
+//    public static void exerciseCatalogue() {
+//        ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+//        exercises.add(new Exercise("Barbell Squat"));
+//        exercises.add(new Exercise("DeadLift"));
+//        exercises.add(new Exercise("Seated Rows"));
+//        exercises.add(new Exercise("Shoulder Press"));
+//
+//
+//    }
+
+
+    public static void browseExercises() {
+        ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+        exercises.add(new Exercise("Barbell Squat"));
+        exercises.add(new Exercise("DeadLift"));
+        exercises.add(new Exercise("Seated Rows"));
+        exercises.add(new Exercise("Shoulder Press"));
+
+        System.out.println("Exercises: ");
+        for (Exercise exercise : exercises) {
+            System.out.println(exercise.getExerciseName());
+        }
+        System.out.println(" ");
+        System.out.println(" ");
     }
 
     private static void planWorkout() {
     }
+
+
 }
