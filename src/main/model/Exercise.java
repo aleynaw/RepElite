@@ -18,6 +18,7 @@ public class Exercise {
 
     }
 
+
     //EFFECTS: constructs an exercise with just name and category (no saved WW or PR)
     public Exercise(String name, String category) {
         this.name = name;
@@ -41,11 +42,11 @@ public class Exercise {
         return category;
     }
 
-//    public int getWorkingWeight() {
-//        return workingWeight;
-//    }
+    public int getWorkingWeight() {
+        return workingWeight;
+    }
 
-//    public int getPersonalRecord() {
-//        return personalRecord;
-//    }
+    public int getPersonalRecord() {
+        return personalRecord;
+    }
 }

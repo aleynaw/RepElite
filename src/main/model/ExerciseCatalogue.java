@@ -8,11 +8,14 @@ public class ExerciseCatalogue {
     private static ExerciseCatalogue catalogue;
 
 
-    private static ArrayList<Exercise> exercises;
+    private ArrayList<Exercise> exercises;
+    private static ArrayList<Exercise> exercisesGiven;
+    private static ArrayList<Exercise> sortedExercises;
 
 
+    //EFFECT: constructs an exercise catalogue
     public ExerciseCatalogue() {
-        exercises = new ArrayList<>();
+        exercises = new ArrayList<Exercise>();
         exercises.add(new Exercise("Barbell Squat", "Quads"));
         exercises.add(new Exercise("DeadLift", "Glutes"));
         exercises.add(new Exercise("Seated Rows", "Back"));
@@ -22,24 +25,27 @@ public class ExerciseCatalogue {
     //REQUIRES:
     //MODIFIES:
     //EFFECTS: sorts given list by muscle category and prints it for user
-    public static void sortList() {
-        catalogue = new ExerciseCatalogue();
-
-        exercises = getUnsortedExerciseList();
+    public static void sortList(ExerciseCatalogue catalogue) {
 
         Comparator<Exercise> compareByCategory = Comparator
                 .comparing(Exercise::getCategory);
 
-        Collections.sort(exercises, compareByCategory);
+        catalogue.exercises.sort(compareByCategory);
 
-        printList(exercises);
+        sortedExercises = catalogue.exercises;
+
+        printList(sortedExercises);
 
 
     }
 
 
-    public static ArrayList<Exercise> getUnsortedExerciseList() {
+    public ArrayList<Exercise> getUnsortedExerciseList() {
         return exercises;
+    }
+
+    public ArrayList<Exercise> getSortedList() {
+        return sortedExercises;
     }
 
 

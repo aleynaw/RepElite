@@ -17,7 +17,6 @@ public class TrackerApp {
     private static ArrayList<Exercise> favourites;
 
 
-
     public TrackerApp() {
         menu();
     }
@@ -128,7 +127,9 @@ public class TrackerApp {
 
 
     public static void browseExercises() {
-        ExerciseCatalogue.sortList();
+        ExerciseCatalogue catalogue = new ExerciseCatalogue();
+
+        ExerciseCatalogue.sortList(catalogue);
     }
 
     public static void printList(ArrayList<Exercise> exerciseArrayList) {
