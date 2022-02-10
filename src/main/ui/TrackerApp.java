@@ -31,10 +31,7 @@ public class TrackerApp {
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public static void menu() {
-        String[] options = {"1 - Create a Profile",
-                "2 - Browse Exercises",
-                "3 - Plan a Workout",
-                "4 - Exit"};
+        String[] options = {"1 - Create a Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
         Scanner scanner = new Scanner(System.in);
         int option = 1;
         while (option != 4) {
@@ -61,19 +58,14 @@ public class TrackerApp {
         }
     }
 
-
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public static void createProfile() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
         name = scanner.nextLine();
-
         System.out.println("What is your age?"); //change to age range?
         age = scanner.nextInt();
-
-        String[] skillz = {"1 - Beginner",
-                "2 - Intermediate",
-                "3 - Advanced",
-                "4 - Chad"};
+        String[] skillz = {"1 - Beginner \n2 - Intermediate \n3 - Advanced \n4 - Chad"};
         int skill;
         while (skillLevel == null) {
             printSkillz(skillz);
@@ -98,10 +90,9 @@ public class TrackerApp {
                 scanner.next(); //not working
             }
         }
-
         prof = new Profile(name, age, skillLevel);
         TrackerApp.viewProfile(prof);
-
+        menuWithProfile(prof);
     }
 
     //REQUIRES: valid profile
@@ -116,6 +107,35 @@ public class TrackerApp {
         System.out.println(" ");
         System.out.println(" ");
 
+    }
+
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    public static void menuWithProfile(Profile profile) {
+        String[] options = {"1 - View Your Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
+        Scanner scanner = new Scanner(System.in);
+        int option = 1;
+        while (option != 4) {
+            printMenu(options);
+            try {
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        viewProfile(prof);;
+                        break;
+                    case 2:
+                        browseExercises();
+                        break;
+                    case 3:
+                        planWorkout();
+                        break;
+                    case 4:
+                        exit(0);
+                }
+            } catch (Exception ex) {
+                System.out.println("Please enter an integer value between 1 and " + options.length);
+                scanner.next(); //not working
+            }
+        }
     }
 
     public static void printSkillz(String[] skillz) {
@@ -142,6 +162,7 @@ public class TrackerApp {
     }
 
     private static void planWorkout() {
+        //stub
     }
 
 
