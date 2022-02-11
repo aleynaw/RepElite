@@ -10,7 +10,7 @@ public class WorkoutPlan {
 
     //EFFECTS: Constructor
     public WorkoutPlan() {
-        workoutPlan = new ArrayList<Exercise>();
+        workoutPlan = new ArrayList<>();
     }
 
     public static void addExerciseShoulderPress(ArrayList<Exercise> workoutPlan) {
@@ -49,7 +49,11 @@ public class WorkoutPlan {
         workoutPlan.add(exercise);
     }
 
-    public void removeFromPlan(Exercise exercise) {
-        workoutPlan.remove(exercise);
+//    public void removeFromPlan(Exercise exercise) {
+//        workoutPlan.remove(exercise);
+//    }
+
+    public ArrayList<Exercise> getWorkoutPlan() {
+        return workoutPlan;
     }
 }

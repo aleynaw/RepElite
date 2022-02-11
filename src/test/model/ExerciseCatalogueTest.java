@@ -16,7 +16,6 @@ public class ExerciseCatalogueTest {
 
     @Test
     void testConstructor() {
-        ArrayList<Exercise> exercises = testCatalogue.getUnsortedExerciseList();
         assertEquals("Barbell Squat", testCatalogue.getUnsortedExerciseList().get(0).getExerciseName());
         assertEquals("DeadLift", testCatalogue.getUnsortedExerciseList().get(1).getExerciseName());
         assertEquals("Seated Rows", testCatalogue.getUnsortedExerciseList().get(2).getExerciseName());
