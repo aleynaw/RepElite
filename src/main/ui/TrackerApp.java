@@ -21,7 +21,6 @@ public class TrackerApp {
     private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
 
 
-
     public TrackerApp() {
         menu();
     }
@@ -37,15 +36,24 @@ public class TrackerApp {
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public static void menu() {
         String[] options = {"1 - Create a Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
+        String[] optionsProfile = {"1 - View Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
         Scanner scanner = new Scanner(System.in);
         int option = 1;
         while (option != 4) {
-            printMenu(options);
+            if (prof == null) {
+                printMenu(options);
+            } else {
+                printMenu(optionsProfile);
+            }
             try {
                 option = scanner.nextInt();
                 switch (option) {
                     case 1:
-                        createProfile();
+                        if (prof == null) {
+                            createProfile();
+                        } else {
+                            viewProfile();
+                        }
                         break;
                     case 2:
                         browseExercises();
@@ -97,7 +105,7 @@ public class TrackerApp {
         }
         prof = new Profile(name, age, skillLevel);
         TrackerApp.viewProfile();
-        menuWithProfile();
+        menu();
     }
 
     //REQUIRES: valid profile
@@ -112,35 +120,6 @@ public class TrackerApp {
         System.out.println(" ");
         System.out.println(" ");
 
-    }
-
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public static void menuWithProfile() {
-        String[] options = {"1 - View Your Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
-        Scanner scanner = new Scanner(System.in);
-        int option = 1;
-        while (option != 4) {
-            printMenu(options);
-            try {
-                option = scanner.nextInt();
-                switch (option) {
-                    case 1:
-                        viewProfile();
-                        break;
-                    case 2:
-                        browseExercises();
-                        break;
-                    case 3:
-                        planWorkout(WORKOUT_PLAN);
-                        break;
-                    case 4:
-                        exit(0);
-                }
-            } catch (Exception ex) {
-                System.out.println("Please enter an integer value between 1 and " + options.length);
-                scanner.next(); //not working
-            }
-        }
     }
 
     public static void printSkillz(String[] skillz) {
