@@ -1,8 +1,10 @@
 package ui;
 
+
 import model.Exercise;
 import model.ExerciseCatalogue;
 import model.Profile;
+import model.WorkoutPlan;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,6 +17,9 @@ public class TrackerApp {
     private static String skillLevel;
     private static int age;
     private static ArrayList<Exercise> favourites;
+
+    private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
+
 
 
     public TrackerApp() {
@@ -46,7 +51,7 @@ public class TrackerApp {
                         browseExercises();
                         break;
                     case 3:
-                        planWorkout();
+                        planWorkout(WORKOUT_PLAN);
                         break;
                     case 4:
                         exit(0);
@@ -91,14 +96,14 @@ public class TrackerApp {
             }
         }
         prof = new Profile(name, age, skillLevel);
-        TrackerApp.viewProfile(prof);
-        menuWithProfile(prof);
+        TrackerApp.viewProfile();
+        menuWithProfile();
     }
 
     //REQUIRES: valid profile
 //    //EFFECTS: prints out profile data
 //    //move to ui??
-    public static void viewProfile(Profile profile) {
+    public static void viewProfile() {
         System.out.println("Your Profile:");
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
@@ -110,7 +115,7 @@ public class TrackerApp {
     }
 
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public static void menuWithProfile(Profile profile) {
+    public static void menuWithProfile() {
         String[] options = {"1 - View Your Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
         Scanner scanner = new Scanner(System.in);
         int option = 1;
@@ -120,13 +125,13 @@ public class TrackerApp {
                 option = scanner.nextInt();
                 switch (option) {
                     case 1:
-                        viewProfile(prof);;
+                        viewProfile();
                         break;
                     case 2:
                         browseExercises();
                         break;
                     case 3:
-                        planWorkout();
+                        planWorkout(WORKOUT_PLAN);
                         break;
                     case 4:
                         exit(0);
@@ -161,9 +166,60 @@ public class TrackerApp {
         System.out.println(" ");
     }
 
-    private static void planWorkout() {
-        //stub
+    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    private static void planWorkout(ArrayList<Exercise> workoutPlan) {
+        System.out.println("What exercises would you like to add?");
+
+
+        Scanner scanner = new Scanner(System.in);
+        String workouts = null;
+        while (workouts == null) {
+            browseExercises();
+            System.out.println("Go Back");
+            try {
+                workouts = scanner.nextLine();
+                switch (workouts) {
+                    case "Seated Rows":
+                        WorkoutPlan.addExerciseSeatedRows(workoutPlan);
+                        addAnother(workoutPlan);
+                        break;
+                    case "DeadLift":
+                        WorkoutPlan.addExerciseDeadLift(workoutPlan);
+                        addAnother(workoutPlan);
+                        break;
+                    case "Barbell Squat":
+                        WorkoutPlan.addExerciseBarbellSquat(workoutPlan);
+                        addAnother(workoutPlan);
+                        break;
+                    case "Shoulder Press":
+                        WorkoutPlan.addExerciseShoulderPress(workoutPlan);
+                        addAnother(workoutPlan);
+                        break;
+                    case "Go Back":
+                        break;
+                }
+            } catch (Exception ex) {
+                System.out.println("Please enter a valid workout (case sensitive)");
+                scanner.next(); //not working
+            }
+        }
+
+    }
+
+    public static void printWP(ArrayList<Exercise> workoutPlan) {
+        System.out.println("Your Current Workout Plan: ");
+        for (Exercise exercise : workoutPlan) {
+            System.out.println(exercise.getCategory() + ": " + exercise.getExerciseName());
+        }
+        System.out.println(" ");
+        System.out.println(" ");
+
+    }
+
+    public static void addAnother(ArrayList<Exercise> workoutPlan) {
+        planWorkout(workoutPlan);
     }
 
 
 }
+
