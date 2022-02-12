@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-
+//Profile creates a profile of name, age, skill level and an empty favourites list
 public class Profile {
 
     private String name;

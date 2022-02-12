@@ -4,6 +4,7 @@ import ui.TrackerApp;
 
 import java.util.ArrayList;
 
+//workoutplan can add pre-set exercises to a workout plan arraylist
 public class WorkoutPlan {
 
     private ArrayList<Exercise> workoutPlan;

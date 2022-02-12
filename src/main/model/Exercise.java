@@ -1,6 +1,6 @@
 package model;
 
-
+//Exercise class, instantiates an object known as exercise
 public class Exercise {
 
     private String name;

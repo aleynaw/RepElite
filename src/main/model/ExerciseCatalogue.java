@@ -4,6 +4,7 @@ import java.util.*;
 
 import static ui.TrackerApp.printList;
 
+//Exercise Catalogue creates an array list of exercises with pre-set exercises and sorts it
 public class ExerciseCatalogue {
     private static ExerciseCatalogue catalogue;
 
