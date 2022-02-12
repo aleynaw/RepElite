@@ -21,11 +21,13 @@ public class TrackerApp {
     private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
 
 
+    //EFFECTS: initializes menu
     public TrackerApp() {
         menu();
     }
 
 
+    //EFFECTS: prints user menu
     public static void printMenu(String[] options) {
         for (String option : options) {
             System.out.println(option);
@@ -33,6 +35,7 @@ public class TrackerApp {
         System.out.println("What would you like to do?");
     }
 
+    //EFFECTS: accepts user's choice from menu, runs corresponding method
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public static void menu() {
         String[] options = {"1 - Create a Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
@@ -71,6 +74,7 @@ public class TrackerApp {
         }
     }
 
+    //EFFECTS: creates a profile with user input
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     public static void createProfile() {
         Scanner scanner = new Scanner(System.in);
@@ -109,8 +113,7 @@ public class TrackerApp {
     }
 
     //REQUIRES: valid profile
-//    //EFFECTS: prints out profile data
-//    //move to ui??
+   //EFFECTS: prints out profile data
     public static void viewProfile() {
         System.out.println("Your Profile:");
         System.out.println("Name: " + name);
@@ -122,6 +125,7 @@ public class TrackerApp {
 
     }
 
+    //EFFECTS: prints a list of skill levels
     public static void printSkillz(String[] skillz) {
         for (String skill : skillz) {
             System.out.println(skill);
@@ -130,12 +134,14 @@ public class TrackerApp {
     }
 
 
+    //EFFECTS: instantiates catalogue
     public static void browseExercises() {
         ExerciseCatalogue catalogue = new ExerciseCatalogue();
 
         ExerciseCatalogue.sortList(catalogue);
     }
 
+    //EFFECTS: prints catalogue for user to browse
     public static void printList(ArrayList<Exercise> exerciseArrayList) {
         System.out.println("Exercises: ");
         for (Exercise exercise : exerciseArrayList) {
@@ -145,6 +151,9 @@ public class TrackerApp {
         System.out.println(" ");
     }
 
+    //REQUIRES: valid workout plan
+    //MODIFIES: this
+    //EFFECTS:
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private static void planWorkout(ArrayList<Exercise> workoutPlan) {
         System.out.println("What exercises would you like to add?");
@@ -179,7 +188,7 @@ public class TrackerApp {
                 }
             } catch (Exception ex) {
                 System.out.println("Please enter a valid workout (case sensitive)");
-                scanner.next(); //not working
+                scanner.nextLine(); //not working
             }
         }
 
@@ -192,6 +201,11 @@ public class TrackerApp {
         }
         System.out.println(" ");
         System.out.println(" ");
+
+    }
+
+    public static void printDupError() {
+        System.out.println("You've already added this workout to your plan for today!");
 
     }
 

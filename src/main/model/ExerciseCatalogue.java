@@ -22,8 +22,8 @@ public class ExerciseCatalogue {
         exercises.add(new Exercise("Shoulder Press", "Shoulders"));
     }
 
-    //REQUIRES:
-    //MODIFIES:
+    //REQUIRES: non-empty catalogue
+    //MODIFIES: this
     //EFFECTS: sorts given list by muscle category and prints it for user
     public static void sortList(ExerciseCatalogue catalogue) {
 
@@ -40,6 +40,7 @@ public class ExerciseCatalogue {
     }
 
 
+    //getters
     public ArrayList<Exercise> getUnsortedExerciseList() {
         return exercises;
     }

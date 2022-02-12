@@ -20,19 +20,6 @@ public class Profile {
         favourites = new ArrayList<>();
     }
 
-//    //REQUIRES: valid profile
-//    //EFFECTS: prints out profile data
-//    //move to ui??
-//    public static void viewProfile(Profile profile) {
-//        System.out.println("Your Profile:");
-//        System.out.println("Name: " + profile.name);
-//        System.out.println("Age: " + profile.age);
-//        System.out.println("Skill Level: " + profile.skillLevel);
-//        System.out.println("Favourites: " + profile.favourites);
-//        System.out.println(" ");
-//        System.out.println(" ");
-//
-//    }
 
 
     //getters
