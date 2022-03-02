@@ -24,3 +24,6 @@ every time I go just because they are the only ones I can remember.
 - As a user, I want to be able to **view** my profile
 - As a user, I want to be able to **browse** the exercises catalogue
 - As a user, I want to be able to **add** exercises to my workout plan for the day
+
+- As a user, I want to be able to **save** current my workout plan to file
+- As a user, I want to be able to **load** a saved workout plan from file
