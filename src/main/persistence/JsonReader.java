@@ -50,7 +50,7 @@ public class JsonReader {
     // MODIFIES: wr
     // EFFECTS: parses thingies from JSON object and adds them to workroom
     private void addExercises(WorkoutPlan wp, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("thingies");
+        JSONArray jsonArray = jsonObject.getJSONArray("exercises");
         for (Object json : jsonArray) {
             JSONObject nextExercise = (JSONObject) json;
             addExercise(wp, nextExercise);
