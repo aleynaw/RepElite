@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writeable;
+
 import java.util.ArrayList;
 
 //Profile creates a profile of name, age, skill level and an empty favourites list
@@ -40,5 +44,23 @@ public class Profile {
     //EFFECTS: adds exercise with given WW and PR to favourites set
 //    public void addExerciseToFavourite(Exercise exercise, int workingWeight, int personalRecord) {
 //        //stub
+//    }
+
+//    @Override
+//    public JSONObject toJson() {
+//        JSONObject json = new JSONObject();
+//        json.put("name", name);
+//        return json;
+//    }
+//
+//    // EFFECTS: returns things in this workroom as a JSON array
+//    private JSONArray exercisesToJson() {
+//        JSONArray jsonArray = new JSONArray();
+//
+//        for (Exercise t : workoutPlan) {
+//            jsonArray.put(t.toJson());
+//        }
+//
+//        return jsonArray;
 //    }
 }

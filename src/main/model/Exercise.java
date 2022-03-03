@@ -1,17 +1,20 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writeable;
+
 //Exercise class, instantiates an object known as exercise
-public class Exercise {
+public class Exercise implements Writeable {
 
     private String name;
-    private String category;
+    private Category category;
     private int workingWeight;
     private int personalRecord;
 
 
 
     //EFFECTS: constructs an exercise with given WW and PR
-    public Exercise(String name, String category, int workingWeight, int personalRecord) {
+    public Exercise(String name, Category category, int workingWeight, int personalRecord) {
         this.name = name;
         this.category = category;
         this.workingWeight = workingWeight;
@@ -21,7 +24,7 @@ public class Exercise {
 
 
     //EFFECTS: constructs an exercise with just name and category (no saved WW or PR)
-    public Exercise(String name, String category) {
+    public Exercise(String name, Category category) {
         this.name = name;
         this.category = category;
     }
@@ -33,7 +36,7 @@ public class Exercise {
         return name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
@@ -43,5 +46,13 @@ public class Exercise {
 
     public int getPersonalRecord() {
         return personalRecord;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("category", category);
+        return json;
     }
 }

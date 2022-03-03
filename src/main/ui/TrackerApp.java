@@ -1,11 +1,16 @@
 package ui;
 
 
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import model.Exercise;
 import model.ExerciseCatalogue;
 import model.Profile;
 import model.WorkoutPlan;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,8 +22,12 @@ public class TrackerApp {
     private static String skillLevel;
     private static int age;
     private static ArrayList<Exercise> favourites;
+    private WorkoutPlan workoutPlans;
 
     private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
+    private static final String JSON_STORE = "./data/workroom.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
     //EFFECTS: initializes menu
@@ -28,7 +37,7 @@ public class TrackerApp {
 
 
     //EFFECTS: prints user menu
-    public static void printMenu(String[] options) {
+    public void printMenu(String[] options) {
         for (String option : options) {
             System.out.println(option);
         }
@@ -37,12 +46,17 @@ public class TrackerApp {
 
     //EFFECTS: accepts user's choice from menu, runs corresponding method
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public static void menu() {
-        String[] options = {"1 - Create a Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
-        String[] optionsProfile = {"1 - View Profile \n2 - Browse Exercises \n3 - Plan a Workout \n4 - Exit"};
+    public void menu() {
+        String[] options = {"1 - Create or Load a Profile \n2 - Browse Exercises \n3 - Plan a Workout  "
+                + "\n4 - Save Workout \n5 - Load Workout \n6 - Exit"};
+        String[] optionsProfile = {"1 - View Profile \n2 - Browse Exercises \n3 - Plan a Workout  \n4 - Save Workout"
+                + "\n5 - Load Workout \n6 - Exit"};
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        workoutPlans = new WorkoutPlan("My Workout Plan");
         Scanner scanner = new Scanner(System.in);
         int option = 1;
-        while (option != 4) {
+        while (option != 6) {
             if (prof == null) {
                 printMenu(options);
             } else {
@@ -62,9 +76,15 @@ public class TrackerApp {
                         browseExercises();
                         break;
                     case 3:
-                        planWorkout(WORKOUT_PLAN);
+                        planWorkout(workoutPlans);
                         break;
                     case 4:
+                        saveWorkoutPlan();
+                        break;
+                    case 5:
+                        loadWorkoutPlan();
+                        break;
+                    case 6:
                         exit(0);
                 }
             } catch (Exception ex) {
@@ -74,9 +94,19 @@ public class TrackerApp {
         }
     }
 
+//    public void createOrLoadProfile() {
+//        try {
+//            prof = jsonReader.read();
+//            System.out.println("Loaded " + prof.getName() + " from " + JSON_STORE);
+//        } catch (IOException e) {
+//            System.out.println("Unable to read from file: " + JSON_STORE);
+//        }
+//        createProfile();
+//    }
+
     //EFFECTS: creates a profile with user input
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    public static void createProfile() {
+    public void createProfile() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("What is your name?");
         name = scanner.nextLine();
@@ -108,12 +138,13 @@ public class TrackerApp {
             }
         }
         prof = new Profile(name, age, skillLevel);
+//        saveProfile();
         TrackerApp.viewProfile();
         menu();
     }
 
     //REQUIRES: valid profile
-   //EFFECTS: prints out profile data
+    //EFFECTS: prints out profile data
     public static void viewProfile() {
         System.out.println("Your Profile:");
         System.out.println("Name: " + name);
@@ -155,7 +186,7 @@ public class TrackerApp {
     //MODIFIES: this
     //EFFECTS:
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
-    private static void planWorkout(ArrayList<Exercise> workoutPlan) {
+    private static void planWorkout(WorkoutPlan workoutPlans) {
         System.out.println("What exercises would you like to add?");
 
 
@@ -168,20 +199,20 @@ public class TrackerApp {
                 workouts = scanner.nextLine();
                 switch (workouts) {
                     case "Seated Rows":
-                        WorkoutPlan.addExerciseSeatedRows(workoutPlan);
-                        addAnother(workoutPlan);
+                        WorkoutPlan.addExerciseSeatedRows(workoutPlans);
+                        addAnother(workoutPlans);
                         break;
                     case "DeadLift":
-                        WorkoutPlan.addExerciseDeadLift(workoutPlan);
-                        addAnother(workoutPlan);
+                        WorkoutPlan.addExerciseDeadLift(workoutPlans);
+                        addAnother(workoutPlans);
                         break;
                     case "Barbell Squat":
-                        WorkoutPlan.addExerciseBarbellSquat(workoutPlan);
-                        addAnother(workoutPlan);
+                        WorkoutPlan.addExerciseBarbellSquat(workoutPlans);
+                        addAnother(workoutPlans);
                         break;
                     case "Shoulder Press":
-                        WorkoutPlan.addExerciseShoulderPress(workoutPlan);
-                        addAnother(workoutPlan);
+                        WorkoutPlan.addExerciseShoulderPress(workoutPlans);
+                        addAnother(workoutPlans);
                         break;
                     case "Go Back":
                         break;
@@ -209,10 +240,33 @@ public class TrackerApp {
 
     }
 
-    public static void addAnother(ArrayList<Exercise> workoutPlan) {
-        planWorkout(workoutPlan);
+    public static void addAnother(WorkoutPlan workoutPlans) {
+        planWorkout(workoutPlans);
+    }
+//
+//    public void saveProfile() {
+//        //stub
+//    }
+
+    public void saveWorkoutPlan() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(workoutPlans);
+            jsonWriter.close();
+            System.out.println("Saved " + workoutPlans.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
+    public void loadWorkoutPlan() {
+        try {
+            workoutPlans = jsonReader.read();
+            System.out.println("Loaded " + workoutPlans.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
 
 }
 

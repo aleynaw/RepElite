@@ -2,6 +2,7 @@ package model;
 
 import java.util.*;
 
+import static model.Category.*;
 import static ui.TrackerApp.printList;
 
 //Exercise Catalogue creates an array list of exercises with pre-set exercises and sorts it
@@ -17,10 +18,10 @@ public class ExerciseCatalogue {
     //EFFECT: constructs an exercise catalogue
     public ExerciseCatalogue() {
         exercises = new ArrayList<Exercise>();
-        exercises.add(new Exercise("Barbell Squat", "Quads"));
-        exercises.add(new Exercise("DeadLift", "Glutes"));
-        exercises.add(new Exercise("Seated Rows", "Back"));
-        exercises.add(new Exercise("Shoulder Press", "Shoulders"));
+        exercises.add(new Exercise("Barbell Squat", Quads));
+        exercises.add(new Exercise("DeadLift", Glutes));
+        exercises.add(new Exercise("Seated Rows", Back));
+        exercises.add(new Exercise("Shoulder Press", Shoulders));
     }
 
     //REQUIRES: non-empty catalogue

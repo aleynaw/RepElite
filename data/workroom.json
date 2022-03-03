@@ -1,0 +1,13 @@
+{
+    "exercises": [
+        {
+            "name": "Barbell Squat",
+            "category": "Quads"
+        },
+        {
+            "name": "DeadLift",
+            "category": "Glutes"
+        }
+    ],
+    "name": "My Workout Plan"
+}

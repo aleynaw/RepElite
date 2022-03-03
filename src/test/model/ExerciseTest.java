@@ -3,6 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static model.Category.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ExerciseTest {
@@ -11,8 +12,8 @@ public class ExerciseTest {
 
     @BeforeEach
     void runBefore() {
-        testExercise = new Exercise("Leg Press", "Quads");
-        testExerciseWW = new Exercise("Leg Press", "Quads", 100, 135);
+        testExercise = new Exercise("Leg Press", Quads);
+        testExerciseWW = new Exercise("Leg Press", Quads, 100, 135);
     }
 
     @Test

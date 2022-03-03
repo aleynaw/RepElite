@@ -12,75 +12,75 @@ public class WorkoutPlanTest {
 
     @BeforeEach
     void runBefore() {
-        testWorkoutPlan = new WorkoutPlan();
+        testWorkoutPlan = new WorkoutPlan("New Workout Plan");
     }
 
     @Test
     void testConstructor() {
-        assertTrue(testWorkoutPlan.getWorkoutPlan().isEmpty());
+        assertTrue(testWorkoutPlan.getWorkoutPlans().isEmpty());
     }
 
     @Test
     void testAddExerciseShoulderPress() {
-        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Shoulder Press", testWorkoutPlan.getWorkoutPlan().get(0).getExerciseName());
+        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan);
+        assertEquals("Shoulder Press", testWorkoutPlan.getWorkoutPlans().get(0).getExerciseName());
         assertEquals(checker, 0);
 
     }
 
     @Test
     void testAddExerciseBarbellSquat() {
-        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Barbell Squat", testWorkoutPlan.getWorkoutPlan().get(0).getExerciseName());
+        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan);
+        assertEquals("Barbell Squat", testWorkoutPlan.getWorkoutPlans().get(0).getExerciseName());
         assertEquals(checker, 0);
     }
 
     @Test
     void testAddExerciseDeadLift() {
-        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlan().get(0).getExerciseName());
+        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan);
+        assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlans().get(0).getExerciseName());
         assertEquals(checker, 0);
     }
 
     @Test
     void testAddExerciseSeatedRows() {
-        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Seated Rows", testWorkoutPlan.getWorkoutPlan().get(0).getExerciseName());
+        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan);
+        assertEquals("Seated Rows", testWorkoutPlan.getWorkoutPlans().get(0).getExerciseName());
         assertEquals(checker, 0);
     }
 
     @Test
     void testAddMultipleToPlanNonDupe() {
-        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan.getWorkoutPlan());
-        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Seated Rows", testWorkoutPlan.getWorkoutPlan().get(0).getExerciseName());
-        assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlan().get(1).getExerciseName());
+        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan);
+        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan);
+        assertEquals("Seated Rows", testWorkoutPlan.getWorkoutPlans().get(0).getExerciseName());
+        assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlans().get(1).getExerciseName());
 
 
-        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Barbell Squat", testWorkoutPlan.getWorkoutPlan().get(2).getExerciseName());
-        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Shoulder Press", testWorkoutPlan.getWorkoutPlan().get(3).getExerciseName());
+        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan);
+        assertEquals("Barbell Squat", testWorkoutPlan.getWorkoutPlans().get(2).getExerciseName());
+        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan);
+        assertEquals("Shoulder Press", testWorkoutPlan.getWorkoutPlans().get(3).getExerciseName());
         assertEquals(checker, 0);
     }
 
     @Test
     void testAddMultipleToPlanDupe(){
-        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan.getWorkoutPlan());
-        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Shoulder Press", testWorkoutPlan.getWorkoutPlan().get(0).getExerciseName());
+        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan);
+        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan);
+        assertEquals("Shoulder Press", testWorkoutPlan.getWorkoutPlans().get(0).getExerciseName());
 
-        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan.getWorkoutPlan());
-        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Seated Rows", testWorkoutPlan.getWorkoutPlan().get(1).getExerciseName());
+        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan);
+        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan);
+        assertEquals("Seated Rows", testWorkoutPlan.getWorkoutPlans().get(1).getExerciseName());
 
-        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan.getWorkoutPlan());
-        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("Barbell Squat", testWorkoutPlan.getWorkoutPlan().get(2).getExerciseName());
+        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan);
+        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan);
+        assertEquals("Barbell Squat", testWorkoutPlan.getWorkoutPlans().get(2).getExerciseName());
 
-        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan.getWorkoutPlan());
-        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan.getWorkoutPlan());
-        assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlan().get(3).getExerciseName());
+        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan);
+        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan);
+        assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlans().get(3).getExerciseName());
     }
 
 //    @Test
