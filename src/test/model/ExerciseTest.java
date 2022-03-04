@@ -21,15 +21,21 @@ public class ExerciseTest {
     void testConstructorNoWWPR() {
         assertEquals("Leg Press", testExercise.getExerciseName());
         assertEquals("Quads", testExercise.getCategoryName());
+        assertEquals(Quads, testExercise.getCategory());
     }
 
     @Test
     void testConstructorWWPR() {
         assertEquals("Leg Press", testExerciseWW.getExerciseName());
         assertEquals("Quads", testExerciseWW.getCategoryName());
+        assertEquals(Quads, testExercise.getCategory());
         assertEquals(100, testExerciseWW.getWorkingWeight());
         assertEquals(135, testExerciseWW.getPersonalRecord());
 
+    }
+
+    @Test
+    void testJSON() {
 
     }
 }

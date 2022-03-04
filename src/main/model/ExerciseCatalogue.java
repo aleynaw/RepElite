@@ -18,7 +18,7 @@ public class ExerciseCatalogue {
 
     //EFFECT: constructs an exercise catalogue
     public ExerciseCatalogue() {
-        exercises = new ArrayList<Exercise>();
+        exercises = new ArrayList<>();
         exercises.add(new Exercise("Barbell Squat", Quads));
         exercises.add(new Exercise("DeadLift", Glutes));
         exercises.add(new Exercise("Seated Rows", Back));

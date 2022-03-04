@@ -3,6 +3,7 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writeable;
+import ui.TrackerApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,11 @@ import java.util.List;
 //list of profiles, used to load JSON conveniently
 public class SavedProfiles implements Writeable {
 
-    private String name;
-    public ArrayList<Profile> savedProfileArray;
+    private static String name;
+    private static int age;
+    private static String skillLevel;
+    private ArrayList<Profile> savedProfileArray;
+    private static Profile profile;
 
     //EFFECTS: Constructor
     public SavedProfiles(String name) {
@@ -34,7 +38,11 @@ public class SavedProfiles implements Writeable {
         return name;
     }
 
-    public void get() {
+
+    //EFFECTS: assigns values from loaded profile to current profile
+    public static void assignValues(SavedProfiles savedProfiles) {
+        profile = savedProfiles.savedProfileArray.get(0);
+        TrackerApp.assignValuesUI(profile);
 
     }
 

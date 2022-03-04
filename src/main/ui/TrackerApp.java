@@ -115,8 +115,8 @@ public class TrackerApp {
                     break;
                 case 2:
                     loadProfiles();
-                    prof = savedProfiles.savedProfileArray.get(0);
-                    assignValues(prof);
+                    SavedProfiles.assignValues(savedProfiles);
+//                    assignValuesUI(prof);
                     break;
                 case 3:
                     break;
@@ -128,10 +128,11 @@ public class TrackerApp {
     }
 
     //EFFECTS: assigns values from loaded profile to current profile
-    public void assignValues(Profile prof) {
-        name = prof.getName();
-        age = prof.getAge();
-        skillLevel = prof.getSkillLevel();
+    public static void assignValuesUI(Profile profile) {
+        name = profile.getName();
+        age = profile.getAge();
+        skillLevel = profile.getSkillLevel();
+        prof = new Profile(name, age,skillLevel);
 
     }
 
