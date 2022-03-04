@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// **Code Modified from JsonSerializationDemo**
 public class JsonWriterP {
     private static final int TAB = 4;
     private PrintWriter writer;

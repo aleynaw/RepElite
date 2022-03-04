@@ -5,7 +5,9 @@ import org.json.JSONObject;
 import persistence.Writeable;
 
 import java.util.ArrayList;
+import java.util.List;
 
+//list of profiles, used to load JSON conveniently
 public class SavedProfiles implements Writeable {
 
     private String name;
@@ -53,5 +55,9 @@ public class SavedProfiles implements Writeable {
         }
 
         return jsonArray;
+    }
+
+    public List<Profile> getSavedProfiles() {
+        return savedProfileArray;
     }
 }

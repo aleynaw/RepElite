@@ -101,6 +101,7 @@ public class TrackerApp {
         }
     }
 
+    //EFFECTS: menu to select whether to load or create a profile
     public void loadOrCreateMenu() {
         String[] profileOptions = {"1 - Create Profile \n2 - Load Profile \n3 - Go Back"};
         Scanner scanner = new Scanner(System.in);
@@ -126,6 +127,7 @@ public class TrackerApp {
         }
     }
 
+    //EFFECTS: assigns values from loaded profile to current profile
     public void assignValues(Profile prof) {
         name = prof.getName();
         age = prof.getAge();
@@ -214,7 +216,7 @@ public class TrackerApp {
 
     //REQUIRES: valid workout plan
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: select workout menu, allows user to choose which exercise to add
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
     private static void planWorkout(WorkoutPlan workoutPlans) {
         System.out.println("What exercises would you like to add?");
@@ -255,6 +257,7 @@ public class TrackerApp {
 
     }
 
+    //EFFECTS: prints exercises
     public static void printWP(ArrayList<Exercise> workoutPlan) {
         System.out.println("Your Current Workout Plan: ");
         for (Exercise exercise : workoutPlan) {
@@ -270,6 +273,7 @@ public class TrackerApp {
 
     }
 
+    //EFFECTS: recurse planworkout loop
     public static void addAnother(WorkoutPlan workoutPlans) {
         planWorkout(workoutPlans);
     }
@@ -278,6 +282,8 @@ public class TrackerApp {
 //        //stub
 //    }
 
+    // **Code Modified from JsonSerializationDemo**
+    // EFFECTS: saves workoutPlan
     public void saveWorkoutPlan() {
         try {
             jsonWriter.open();
@@ -289,6 +295,8 @@ public class TrackerApp {
         }
     }
 
+    // **Code Modified from JsonSerializationDemo**
+    // EFFECTS: loads workoutPlan from file
     public void loadWorkoutPlan() {
         try {
             workoutPlans = jsonReader.read();
@@ -298,6 +306,8 @@ public class TrackerApp {
         }
     }
 
+    // **Code Modified from JsonSerializationDemo**
+    // EFFECTS: saves profile
     public void saveProfile() {
         try {
             jsonWriterP.open();
@@ -309,6 +319,8 @@ public class TrackerApp {
         }
     }
 
+    // **Code Modified from JsonSerializationDemo**
+    // EFFECTS: loads profile from file
     public void loadProfiles() {
         try {
             savedProfiles = jsonReaderP.read();

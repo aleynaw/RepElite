@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//test suite for exercise catalogue
 public class ExerciseCatalogueTest {
     private static ExerciseCatalogue testCatalogue;
 

@@ -5,6 +5,7 @@ import java.util.*;
 import static model.Category.*;
 import static ui.TrackerApp.printList;
 
+
 //Exercise Catalogue creates an array list of exercises with pre-set exercises and sorts it
 public class ExerciseCatalogue {
     private static ExerciseCatalogue catalogue;
@@ -30,7 +31,7 @@ public class ExerciseCatalogue {
     public static void sortList(ExerciseCatalogue catalogue) {
 
         Comparator<Exercise> compareByCategory = Comparator
-                .comparing(Exercise::getCategory);
+                .comparing(Exercise::getCategoryName);
 
         catalogue.exercises.sort(compareByCategory);
 

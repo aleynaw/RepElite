@@ -3,6 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writeable;
 
+
 //Exercise class, instantiates an object known as exercise
 public class Exercise implements Writeable {
 
@@ -38,6 +39,10 @@ public class Exercise implements Writeable {
 
     public Category getCategory() {
         return category;
+    }
+
+    public String getCategoryName() {
+        return category.toString();
     }
 
     public int getWorkingWeight() {

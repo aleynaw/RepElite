@@ -1,0 +1,13 @@
+{
+  "exercises": [
+    {
+      "name": "Barbell Squat",
+      "category": "Quads"
+    },
+    {
+      "name": "Seated Rows",
+      "category": "Back"
+    }
+  ],
+  "name": "My workout plan"
+}

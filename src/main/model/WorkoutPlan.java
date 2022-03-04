@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import static model.Category.*;
 
+
 //workoutplan can add pre-set exercises to a workout plan arraylist
 public class WorkoutPlan implements Writeable {
 
@@ -25,6 +26,10 @@ public class WorkoutPlan implements Writeable {
 
     public String getName() {
         return name;
+    }
+
+    public int getSize() {
+        return workoutPlan.size();
     }
 
     //REQUIRES: valid workoutPlan arraylist

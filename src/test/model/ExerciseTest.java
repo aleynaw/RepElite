@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static model.Category.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+//test suite for exercises
 public class ExerciseTest {
     private Exercise testExercise;
     private Exercise testExerciseWW;
@@ -19,13 +20,13 @@ public class ExerciseTest {
     @Test
     void testConstructorNoWWPR() {
         assertEquals("Leg Press", testExercise.getExerciseName());
-        assertEquals("Quads", testExercise.getCategory());
+        assertEquals("Quads", testExercise.getCategoryName());
     }
 
     @Test
     void testConstructorWWPR() {
         assertEquals("Leg Press", testExerciseWW.getExerciseName());
-        assertEquals("Quads", testExerciseWW.getCategory());
+        assertEquals("Quads", testExerciseWW.getCategoryName());
         assertEquals(100, testExerciseWW.getWorkingWeight());
         assertEquals(135, testExerciseWW.getPersonalRecord());
 

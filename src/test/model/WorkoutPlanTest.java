@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//workoutplan test suite
 public class WorkoutPlanTest {
     private WorkoutPlan testWorkoutPlan;
     private static int checker;

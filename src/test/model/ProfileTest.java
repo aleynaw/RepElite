@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//test suite for profile
 class ProfileTest {
     private Profile testProfile;
 
