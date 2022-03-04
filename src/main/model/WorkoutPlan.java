@@ -151,7 +151,7 @@ public class WorkoutPlan implements Writeable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this workoutplan as a JSON array
     private JSONArray exercisesToJson() {
         JSONArray jsonArray = new JSONArray();
 

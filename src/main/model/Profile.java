@@ -7,7 +7,7 @@ import persistence.Writeable;
 import java.util.ArrayList;
 
 //Profile creates a profile of name, age, skill level and an empty favourites list
-public class Profile {
+public class Profile implements Writeable {
 
     private String name;
     private String skillLevel;
@@ -46,21 +46,13 @@ public class Profile {
 //        //stub
 //    }
 
-//    @Override
-//    public JSONObject toJson() {
-//        JSONObject json = new JSONObject();
-//        json.put("name", name);
-//        return json;
-//    }
-//
-//    // EFFECTS: returns things in this workroom as a JSON array
-//    private JSONArray exercisesToJson() {
-//        JSONArray jsonArray = new JSONArray();
-//
-//        for (Exercise t : workoutPlan) {
-//            jsonArray.put(t.toJson());
-//        }
-//
-//        return jsonArray;
-//    }
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("age", age);
+        json.put("skillLevel", skillLevel);
+        return json;
+    }
+
 }

@@ -2,12 +2,11 @@ package ui;
 
 
 import com.sun.corba.se.spi.orbutil.threadpool.Work;
-import model.Exercise;
-import model.ExerciseCatalogue;
-import model.Profile;
-import model.WorkoutPlan;
+import model.*;
 import persistence.JsonReader;
+import persistence.JsonReaderP;
 import persistence.JsonWriter;
+import persistence.JsonWriterP;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,11 +22,15 @@ public class TrackerApp {
     private static int age;
     private static ArrayList<Exercise> favourites;
     private WorkoutPlan workoutPlans;
+    private SavedProfiles savedProfiles;
 
     private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/workoutplan.json";
+    private static final String JSON_STORE_PROF = "./data/profiles.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private JsonWriterP jsonWriterP;
+    private JsonReaderP jsonReaderP;
 
 
     //EFFECTS: initializes menu
@@ -53,7 +56,10 @@ public class TrackerApp {
                 + "\n5 - Load Workout \n6 - Exit"};
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        jsonWriterP = new JsonWriterP(JSON_STORE_PROF);
+        jsonReaderP = new JsonReaderP(JSON_STORE_PROF);
         workoutPlans = new WorkoutPlan("My Workout Plan");
+        savedProfiles = new SavedProfiles("My Profile");
         Scanner scanner = new Scanner(System.in);
         int option = 1;
         while (option != 6) {
@@ -67,7 +73,8 @@ public class TrackerApp {
                 switch (option) {
                     case 1:
                         if (prof == null) {
-                            createProfile();
+                            loadOrCreateMenu();
+                            break;
                         } else {
                             viewProfile();
                         }
@@ -94,15 +101,37 @@ public class TrackerApp {
         }
     }
 
-//    public void createOrLoadProfile() {
-//        try {
-//            prof = jsonReader.read();
-//            System.out.println("Loaded " + prof.getName() + " from " + JSON_STORE);
-//        } catch (IOException e) {
-//            System.out.println("Unable to read from file: " + JSON_STORE);
-//        }
-//        createProfile();
-//    }
+    public void loadOrCreateMenu() {
+        String[] profileOptions = {"1 - Create Profile \n2 - Load Profile \n3 - Go Back"};
+        Scanner scanner = new Scanner(System.in);
+        printMenu(profileOptions);
+        try {
+            int profOpt;
+            profOpt = scanner.nextInt();
+            switch (profOpt) {
+                case 1:
+                    createProfile();
+                    break;
+                case 2:
+                    loadProfiles();
+                    prof = savedProfiles.savedProfileArray.get(0);
+                    assignValues(prof);
+                    break;
+                case 3:
+                    break;
+            }
+        } catch (Exception ex) {
+            System.out.println("Please enter a valid integer!");
+            scanner.nextLine(); //not working
+        }
+    }
+
+    public void assignValues(Profile prof) {
+        name = prof.getName();
+        age = prof.getAge();
+        skillLevel = prof.getSkillLevel();
+
+    }
 
     //EFFECTS: creates a profile with user input
     @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
@@ -138,7 +167,8 @@ public class TrackerApp {
             }
         }
         prof = new Profile(name, age, skillLevel);
-//        saveProfile();
+        SavedProfiles.addToList(savedProfiles, prof);
+        saveProfile();
         TrackerApp.viewProfile();
         menu();
     }
@@ -268,5 +298,24 @@ public class TrackerApp {
         }
     }
 
+    public void saveProfile() {
+        try {
+            jsonWriterP.open();
+            jsonWriterP.write(savedProfiles);
+            jsonWriterP.close();
+            System.out.println("Saved " + savedProfiles.getName() + " to " + JSON_STORE_PROF);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE_PROF);
+        }
+    }
+
+    public void loadProfiles() {
+        try {
+            savedProfiles = jsonReaderP.read();
+            System.out.println("Loaded " + savedProfiles.getName() + " from " + JSON_STORE_PROF);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE_PROF);
+        }
+    }
 }
 
