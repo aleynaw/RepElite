@@ -27,3 +27,5 @@ every time I go just because they are the only ones I can remember.
 
 - As a user, I want to be able to **save** current my workout plan to file
 - As a user, I want to be able to **load** a saved workout plan from file
+- As a user, I want to be able to have my profile **stored** after creating it
+- As a user, I want to be able to **load** a previously saved profile
