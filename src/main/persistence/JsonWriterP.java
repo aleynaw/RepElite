@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 // **Code Modified from JsonSerializationDemo**
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonWriterP {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -27,7 +28,7 @@ public class JsonWriterP {
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of workroom to file
+    // EFFECTS: writes JSON representation of savedprofiles to file
     public void write(SavedProfiles sp) {
         JSONObject json = sp.toJson();
         saveToFile(json.toString(TAB));

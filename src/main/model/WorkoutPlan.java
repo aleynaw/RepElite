@@ -148,7 +148,11 @@ public class WorkoutPlan implements Writeable {
         return workoutPlan;
     }
 
+
+    //Below code modified from **JsonSerializationDemo**
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Override
+    //EFFECTS: creates JSONObject out of WorkoutPlan
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
@@ -156,7 +160,7 @@ public class WorkoutPlan implements Writeable {
         return json;
     }
 
-    // EFFECTS: returns things in this workoutplan as a JSON array
+    // EFFECTS: returns exercises in this workoutplan as a JSON array
     private JSONArray exercisesToJson() {
         JSONArray jsonArray = new JSONArray();
 

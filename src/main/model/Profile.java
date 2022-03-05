@@ -48,6 +48,9 @@ public class Profile implements Writeable {
 //    }
 
     @Override
+    //Code modified from **JsonSerializationDemo**
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    //EFFECTS: creates JSONObject out of Profile
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

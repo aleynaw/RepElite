@@ -1,7 +1,6 @@
 package ui;
 
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonReaderP;
@@ -36,6 +35,10 @@ public class TrackerApp {
     //EFFECTS: initializes menu
     public TrackerApp() {
         menu();
+    }
+
+    public static Profile getProf() {
+        return prof;
     }
 
 

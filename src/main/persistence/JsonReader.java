@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // **Code Modified from JsonSerializationDemo**
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonReader {
     private String source;
 
@@ -21,7 +22,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads workoutplan from file and returns it;
     // throws IOException if an error occurs reading data from file
     public WorkoutPlan read() throws IOException {
         String jsonData = readFile(source);
@@ -40,7 +41,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses workoutplan from JSON object and returns it
     private WorkoutPlan parseWorkoutPlan(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         WorkoutPlan wp = new WorkoutPlan(name);
@@ -48,8 +49,8 @@ public class JsonReader {
         return wp;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: wp
+    // EFFECTS: parses exercises from JSON object and adds them to workoutplan
     private void addExercises(WorkoutPlan wp, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("exercises");
         for (Object json : jsonArray) {
@@ -58,8 +59,8 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: wp
+    // EFFECTS: parses exercise from JSON object and adds it to workoutplan
     private void addExercise(WorkoutPlan wp, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Category category = Category.valueOf(jsonObject.getString("category"));

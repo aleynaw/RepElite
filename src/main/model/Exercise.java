@@ -53,7 +53,11 @@ public class Exercise implements Writeable {
         return personalRecord;
     }
 
+
     @Override
+    //Code modified from **JsonSerializationDemo**
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    //EFFECTS: creates JSONObject out of Exercise
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);

@@ -11,14 +11,16 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 // **Code Modified from JsonSerializationDemo**
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonReaderP {
     private String sourceProf;
 
+    //Constructor
     public JsonReaderP(String sourceProf) {
         this.sourceProf = sourceProf;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads SavedProfiles from file and returns it;
     // throws IOException if an error occurs reading data from file
     public SavedProfiles read() throws IOException {
         String jsonData = readFile(sourceProf);
@@ -37,7 +39,7 @@ public class JsonReaderP {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses SavedProfiles from JSON object and returns it
     private SavedProfiles parseSavedProfiles(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         SavedProfiles sp = new SavedProfiles(name);
@@ -45,8 +47,8 @@ public class JsonReaderP {
         return sp;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: sp
+    // EFFECTS: parses profiles from JSON object and adds them to SavedProfiles
     private void addProfiles(SavedProfiles sp, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("profiles");
         for (Object json : jsonArray) {
@@ -55,8 +57,8 @@ public class JsonReaderP {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: sp
+    // EFFECTS: parses profile from JSON object and adds it to SavedProfiles
     private void addProfile(SavedProfiles sp, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String skillLevel = jsonObject.getString("skillLevel");

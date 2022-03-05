@@ -14,8 +14,8 @@ public class SavedProfiles implements Writeable {
     private static String name;
     private static int age;
     private static String skillLevel;
-    private ArrayList<Profile> savedProfileArray;
-    private static Profile profile;
+    ArrayList<Profile> savedProfileArray;
+    static Profile profile;
 
     //EFFECTS: Constructor
     public SavedProfiles(String name) {
@@ -30,23 +30,24 @@ public class SavedProfiles implements Writeable {
         savedProfiles.savedProfileArray.add(profile);
     }
 
+    //EFFECTS: adds profile to list inside SavedProfiles
     public void addToList(Profile profile) {
         savedProfileArray.add(profile);
     }
 
-    public String getName() {
-        return name;
-    }
 
 
-    //EFFECTS: assigns values from loaded profile to current profile
+    //EFFECTS: assigns values from loaded profile to dummy profile
     public static void assignValues(SavedProfiles savedProfiles) {
         profile = savedProfiles.savedProfileArray.get(0);
         TrackerApp.assignValuesUI(profile);
 
     }
 
+    //Below JSON code modified from **JsonSerializationDemo**
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
     @Override
+    //EFFECTS: creates JSONObject out of Profiles
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
@@ -54,7 +55,7 @@ public class SavedProfiles implements Writeable {
         return json;
     }
 
-    // EFFECTS: returns things in this ProfilesList as a JSON array
+    // EFFECTS: returns profiles in this ProfilesList as a JSON array
     private JSONArray profilesToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -65,7 +66,12 @@ public class SavedProfiles implements Writeable {
         return jsonArray;
     }
 
+    //getters
     public List<Profile> getSavedProfiles() {
         return savedProfileArray;
+    }
+
+    public String getName() {
+        return name;
     }
 }

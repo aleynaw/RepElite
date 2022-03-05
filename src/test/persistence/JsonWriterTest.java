@@ -26,7 +26,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterEmptyWorkoutPlan() {
         try {
             WorkoutPlan wp = new WorkoutPlan("My workout plan");
             JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkoutPlan.json");
@@ -44,7 +44,7 @@ public class JsonWriterTest extends JsonTest {
     }
 
     @Test
-    void testWriterGeneralWorkroom() {
+    void testWriterGeneralWorkoutPlan() {
         try {
             WorkoutPlan wp = new WorkoutPlan("My workout plan");
             wp.addExerciseBarbellSquat(wp);
