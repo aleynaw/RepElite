@@ -11,13 +11,13 @@ class ProfileTest {
     private Profile testProfile;
 
     @BeforeEach
-    void runBefore() { testProfile = new Profile("Jane Doe", 25, "Chad");}
+    void runBefore() { testProfile = new Profile("Jane Doe", 25, 4);}
 
     @Test
     void testConstructor(){
         assertEquals("Jane Doe", testProfile.getName());
         assertEquals(25, testProfile.getAge());
-        assertEquals("Chad", testProfile.getSkillLevel());
+        assertEquals(4, testProfile.getSkillLevel());
     }
 
 

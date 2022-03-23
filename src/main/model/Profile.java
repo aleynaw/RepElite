@@ -1,6 +1,5 @@
 package model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writeable;
 
@@ -11,14 +10,14 @@ import java.util.ArrayList;
 public class Profile implements Writeable {
 
     private String name;
-    private String skillLevel;
+    private int skillLevel;
     private int age;
     private int workingWeight;
     private int personalRecord;
     private ArrayList<Exercise> favourites;
 
     //EFFECTS: constructs a profile with given name, empty favourites set
-    public Profile(String name, int age, String skillLevel) {
+    public Profile(String name, int age, int skillLevel) {
         this.name = name;
         this.age = age;
         this.skillLevel = skillLevel;
@@ -37,6 +36,18 @@ public class Profile implements Writeable {
     }
 
     public String getSkillLevel() {
+        if (Integer.valueOf(skillLevel) == 1) {
+            return "1 - Beginner";
+        } else if (Integer.valueOf(skillLevel) == 2) {
+            return "2 - Intermediate";
+        } else if (Integer.valueOf(skillLevel) == 3) {
+            return "3 - Advanced";
+        } else {
+            return "4 - Chad";
+        }
+    }
+
+    public int getSkillLevelInt() {
         return skillLevel;
     }
 

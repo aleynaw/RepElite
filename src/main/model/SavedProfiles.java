@@ -3,6 +3,7 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writeable;
+import ui.GUI;
 import ui.TrackerApp;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class SavedProfiles implements Writeable {
     //EFFECTS: assigns values from loaded profile to dummy profile
     public static void assignValues(SavedProfiles savedProfiles) {
         profile = savedProfiles.savedProfileArray.get(0);
-        TrackerApp.assignValuesUI(profile);
+        GUI.assignValuesUI(profile);
 
     }
 

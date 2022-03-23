@@ -1,5 +1,7 @@
 package model;
 
+import ui.tools.CatalogueUI;
+
 import java.util.*;
 
 import static model.Category.*;
@@ -28,7 +30,7 @@ public class ExerciseCatalogue {
     //REQUIRES: non-empty catalogue
     //MODIFIES: this
     //EFFECTS: sorts given list by muscle category and prints it for user
-    public static void sortList(ExerciseCatalogue catalogue) {
+    public static ArrayList<Exercise> sortList(ExerciseCatalogue catalogue) {
 
         Comparator<Exercise> compareByCategory = Comparator
                 .comparing(Exercise::getCategoryName);
@@ -37,7 +39,7 @@ public class ExerciseCatalogue {
 
         sortedExercises = catalogue.exercises;
 
-        printList(sortedExercises);
+        return sortedExercises;
 
 
     }

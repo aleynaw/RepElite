@@ -23,19 +23,19 @@ public class TestSavedProfiles {
 
     @Test
     void testAddToProfilesJustProfile() {
-        testProfile = new Profile("Jane Doe", 25, "Chad");
+        testProfile = new Profile("Jane Doe", 25, 4);
         testSavedProfiles.addToList(testProfile);
     }
 
     @Test
     void testAddToProfilesBoth() {
-        testProfile = new Profile("Jane Doe", 25, "Chad");
+        testProfile = new Profile("Jane Doe", 25, 4);
         SavedProfiles.addToList(testSavedProfiles, testProfile);
     }
 
     @Test
     void testAssignValues() {
-        testProfile = new Profile("Jane Doe", 25, "Chad");
+        testProfile = new Profile("Jane Doe", 25, 4);
         SavedProfiles.addToList(testSavedProfiles, testProfile);
         SavedProfiles.assignValues(testSavedProfiles);
         assertEquals(TrackerApp.getProf().getName(), testSavedProfiles.savedProfileArray.get(0).getName());

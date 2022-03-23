@@ -61,9 +61,9 @@ public class JsonReaderP {
     // EFFECTS: parses profile from JSON object and adds it to SavedProfiles
     private void addProfile(SavedProfiles sp, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
-        String skillLevel = jsonObject.getString("skillLevel");
+        int skillLevel = jsonObject.getInt("skillLevel");
         int age = jsonObject.getInt("age");
-        Profile profile = new Profile(name, age, skillLevel);
+        Profile profile = new Profile(name, age, Integer.valueOf(skillLevel));
         sp.addToList(profile);
     }
 }

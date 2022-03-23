@@ -45,7 +45,7 @@ public class JsonWriterPTest extends JsonTest {
     void testWriterGeneralSavedProfiles() {
         try {
             SavedProfiles sp = new SavedProfiles("My Profile");
-            sp.addToList(new Profile("Aleyna", 18, "Chad"));
+            sp.addToList(new Profile("Aleyna", 18, 4));
             JsonWriterP writer = new JsonWriterP("./data/testWriterGeneralSavedProfiles.json");
             writer.open();
             writer.write(sp);
@@ -56,7 +56,7 @@ public class JsonWriterPTest extends JsonTest {
             assertEquals("My Profile", sp.getName());
             List<Profile> profiles = sp.getSavedProfiles();
             assertEquals(1, profiles.size());
-            checkProfile("Aleyna", 18, "Chad", profiles.get(0));
+            checkProfile("Aleyna", 18, String.valueOf(4), profiles.get(0));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

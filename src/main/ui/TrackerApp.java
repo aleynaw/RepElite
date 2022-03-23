@@ -83,7 +83,7 @@ public class TrackerApp {
                         }
                         break;
                     case 2:
-                        browseExercises();
+                        GUI.browseExercises();
                         break;
                     case 3:
                         planWorkout(workoutPlans);
@@ -135,7 +135,7 @@ public class TrackerApp {
         name = profile.getName();
         age = profile.getAge();
         skillLevel = profile.getSkillLevel();
-        prof = new Profile(name, age,skillLevel);
+        prof = new Profile(name, age, Integer.valueOf(skillLevel));
 
     }
 
@@ -172,7 +172,7 @@ public class TrackerApp {
                 scanner.next(); //not working
             }
         }
-        prof = new Profile(name, age, skillLevel);
+        prof = new Profile(name, age, Integer.valueOf(skillLevel));
         SavedProfiles.addToList(savedProfiles, prof);
         saveProfile();
         TrackerApp.viewProfile();
@@ -201,12 +201,13 @@ public class TrackerApp {
     }
 
 
-    //EFFECTS: instantiates catalogue
-    public static void browseExercises() {
-        ExerciseCatalogue catalogue = new ExerciseCatalogue();
-
-        ExerciseCatalogue.sortList(catalogue);
-    }
+//    //EFFECTS: instantiates catalogue
+//    public static ArrayList<Exercise> browseExercises() {
+//        ExerciseCatalogue catalogue = new ExerciseCatalogue();
+//
+//        return ExerciseCatalogue.sortList(catalogue);
+//
+//    }
 
     //EFFECTS: prints catalogue for user to browse
     public static void printList(ArrayList<Exercise> exerciseArrayList) {
@@ -229,7 +230,7 @@ public class TrackerApp {
         Scanner scanner = new Scanner(System.in);
         String workouts = null;
         while (workouts == null) {
-            browseExercises();
+            GUI.browseExercises();
             System.out.println("Go Back");
             try {
                 workouts = scanner.nextLine();
