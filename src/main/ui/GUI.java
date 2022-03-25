@@ -302,6 +302,7 @@ public class GUI extends JFrame {
         }
     }
 
+    // **Code Modified from Online Source -- https://www.javatpoint.com/java-jcheckbox**
     //EFFECTS: checkbox pane for selecting workouts to be added to plan, creates new frame
     // using user input and prints new workout plan
     public class PlanningUI extends JInternalFrame implements ActionListener {

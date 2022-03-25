@@ -17,7 +17,19 @@ class ProfileTest {
     void testConstructor(){
         assertEquals("Jane Doe", testProfile.getName());
         assertEquals(25, testProfile.getAge());
-        assertEquals(4, testProfile.getSkillLevel());
+        assertEquals("4 - Chad", testProfile.getSkillLevel());
+    }
+
+    @Test
+    void testGetSkillLevel() {
+        Profile testP1 = new Profile("JD", 25, 1);
+        assertEquals("1 - Beginner", testP1.getSkillLevel());
+
+        Profile testP2 = new Profile("JD", 25, 2);
+        assertEquals("2 - Intermediate", testP2.getSkillLevel());
+
+        Profile testP3 = new Profile("JD", 25, 3);
+        assertEquals("3 - Advanced", testP3.getSkillLevel());
     }
 
 
