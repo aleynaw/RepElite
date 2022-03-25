@@ -54,7 +54,7 @@ public class WorkoutPlan implements Writeable {
             }
         }
 
-        TrackerApp.printWP(workoutPlans.workoutPlan);
+//        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
 
     //REQUIRES: valid workoutPlan arraylist
@@ -79,7 +79,7 @@ public class WorkoutPlan implements Writeable {
             }
         }
 
-        TrackerApp.printWP(workoutPlans.workoutPlan);
+//        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
 
     //REQUIRES: valid workoutPlan arraylist
@@ -104,7 +104,7 @@ public class WorkoutPlan implements Writeable {
             }
         }
 
-        TrackerApp.printWP(workoutPlans.workoutPlan);
+//        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
 
     //REQUIRES: valid workoutPlan arraylist
@@ -129,7 +129,7 @@ public class WorkoutPlan implements Writeable {
             }
         }
 
-        TrackerApp.printWP(workoutPlans.workoutPlan);
+//        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
 
     //REQUIRES: valid exercise (with name and category)

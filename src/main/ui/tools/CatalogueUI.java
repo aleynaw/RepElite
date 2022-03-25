@@ -14,7 +14,7 @@ public class CatalogueUI extends JInternalFrame {
 
     private static final int LOC = 100;
     private static final int WIDTH = 300;
-    private static final int HEIGHT = 400;
+    private static final int HEIGHT = 200;
 
     public CatalogueUI(ArrayList<Exercise> ec, Component parent) {
 //        profileDisplay = new JTextField("Your Name: " + p.getName());
@@ -33,20 +33,20 @@ public class CatalogueUI extends JInternalFrame {
         setVisible(true);
     }
 
-    public static void printCatalogue(ArrayList<Exercise> ec) {
-        exerciseCatalogue = ec;
-    }
+//    public static void printCatalogue(ArrayList<Exercise> ec) {
+//        exerciseCatalogue = ec;
+//    }
 
     private String toString(ArrayList<Exercise> ec) {
         ArrayList<String> str = new ArrayList<>();
         for (Exercise e : ec) {
-            str.add(e.getExerciseName() + " - " + e.getCategoryName() + "\n");
+            str.add("\n" + e.getExerciseName() + " - " + e.getCategoryName() + "\n");
         }
         String listString = String.join("", str);
         return listString;
     }
 
     private void setPosition(Component parent) {
-        setLocation(parent.getWidth() - 600, 0);
+        setLocation(parent.getWidth() - 675, 0);
     }
 }

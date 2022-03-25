@@ -34,6 +34,6 @@ public class ProfileUI extends JInternalFrame {
     }
 
     private void setPosition(Component parent) {
-        setLocation(parent.getWidth() - WIDTH, 0);
+        setLocation(parent.getWidth() - WIDTH - 50, 0);
     }
 }
