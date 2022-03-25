@@ -26,7 +26,7 @@ public class GUI extends JFrame {
     private WorkoutPlan workoutPlans;
     private SavedProfiles savedProfiles;
     private static ArrayList<Exercise> sortedExercises;
-    private String msg;
+    private String msg = "";
 
     private static String name;
     private static int age;
@@ -39,6 +39,7 @@ public class GUI extends JFrame {
     JCheckBox cb3;
     JCheckBox cb4;
     JButton jbutton;
+    private int amount = 0;
 
 
     private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
@@ -324,8 +325,6 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             workoutPlans = new WorkoutPlan("My Workout Plan");
-            int amount = 0;
-            String msg = "";
             if (cb1.isSelected()) {
                 amount += 1;
                 msg = "Seated Rows (Back) -- 4s8r\n";
@@ -346,10 +345,7 @@ public class GUI extends JFrame {
                 msg += "Shoulder Press (Shoulders) -- 4s15r\n";
                 WorkoutPlan.addExerciseShoulderPress(workoutPlans);
             }
-            msg += "-----------------\n";
-            msg += "Total Exercises: " + amount;
-//        JOptionPane.showMessageDialog(this, msg + "Total Exercises: " + amount);
-//            workoutPlan = new JTextArea(msg + "Total Exercises: " + amount);
+            msg += "-----------------\n" + "Total Exercises: " + amount;
             desktop.add(new WorkoutPlanUI(workoutPlans, msg, GUI.this));
         }
     }
