@@ -17,10 +17,19 @@ public class WorkoutPlan implements Writeable {
     private ArrayList<Exercise> workoutPlan;
     private static int checker;
 
+    private static Exercise shoulderPress;
+    private static Exercise barbellSquat;
+    private static Exercise deadLift;
+    private static Exercise seatedRows;
+
     //EFFECTS: Constructor
     public WorkoutPlan(String name) {
         this.name = name;
         workoutPlan = new ArrayList<>();
+        shoulderPress = new Exercise("Shoulder Press", Shoulders);
+        barbellSquat = new Exercise("Barbell Squat", Quads);
+        deadLift = new Exercise("DeadLift", Glutes);
+        seatedRows = new Exercise("Seated Rows", Back);
 
     }
 
@@ -37,9 +46,9 @@ public class WorkoutPlan implements Writeable {
     //EFFECTS: adds the "Shoulder Press" exercise to user's workout plan
     public static void addExerciseShoulderPress(WorkoutPlan workoutPlans) {
         checker = 0;
-        Exercise seatedRows = new Exercise("Shoulder Press", Shoulders);
+        Exercise shoulderPress = new Exercise("Shoulder Press", Shoulders);
         if (workoutPlans.workoutPlan.isEmpty()) {
-            workoutPlans.addToPlan(seatedRows);
+            workoutPlans.addToPlan(shoulderPress);
         } else {
             for (Exercise exercise : workoutPlans.workoutPlan) {
                 if (exercise.getExerciseName().equals("Shoulder Press")) {
@@ -50,7 +59,7 @@ public class WorkoutPlan implements Writeable {
                 TrackerApp.printDupError();
                 checker = 0;
             } else {
-                workoutPlans.addToPlan(seatedRows);
+                workoutPlans.addToPlan(shoulderPress);
             }
         }
 
@@ -62,9 +71,9 @@ public class WorkoutPlan implements Writeable {
     //EFFECTS: adds the "Barbell Squat" exercise to user's workout plan
     public static void addExerciseBarbellSquat(WorkoutPlan workoutPlans) {
         checker = 0;
-        Exercise seatedRows = new Exercise("Barbell Squat", Quads);
+        Exercise barbellSquat = new Exercise("Barbell Squat", Quads);
         if (workoutPlans.workoutPlan.isEmpty()) {
-            workoutPlans.addToPlan(seatedRows);
+            workoutPlans.addToPlan(barbellSquat);
         } else {
             for (Exercise exercise : workoutPlans.workoutPlan) {
                 if (exercise.getExerciseName().equals("Barbell Squat")) {
@@ -75,7 +84,7 @@ public class WorkoutPlan implements Writeable {
                 TrackerApp.printDupError();
                 checker = 0;
             } else {
-                workoutPlans.addToPlan(seatedRows);
+                workoutPlans.addToPlan(barbellSquat);
             }
         }
 
@@ -87,9 +96,9 @@ public class WorkoutPlan implements Writeable {
     //EFFECTS: adds the "DeadLift" exercise to user's workout plan
     public static void addExerciseDeadLift(WorkoutPlan workoutPlans) {
         checker = 0;
-        Exercise seatedRows = new Exercise("DeadLift", Glutes);
+        Exercise deadLift = new Exercise("DeadLift", Glutes);
         if (workoutPlans.workoutPlan.isEmpty()) {
-            workoutPlans.addToPlan(seatedRows);
+            workoutPlans.addToPlan(deadLift);
         } else {
             for (Exercise exercise : workoutPlans.workoutPlan) {
                 if (exercise.getExerciseName().equals("DeadLift")) {
@@ -100,7 +109,7 @@ public class WorkoutPlan implements Writeable {
                 TrackerApp.printDupError();
                 checker = 0;
             } else {
-                workoutPlans.addToPlan(seatedRows);
+                workoutPlans.addToPlan(deadLift);
             }
         }
 
@@ -146,6 +155,31 @@ public class WorkoutPlan implements Writeable {
     //getters
     public ArrayList<Exercise> getWorkoutPlans() {
         return workoutPlan;
+    }
+
+    public static String messageBuilder(WorkoutPlan wp) {
+        int amount = 0;
+        String msg = "";
+        for (Exercise e : wp.workoutPlan) {
+            if (e.getExerciseName().equals(shoulderPress.getExerciseName())) {
+                amount++;
+                msg += "Shoulder Press (Shoulders) -- 4s15r\n";
+            }
+            if (e.getExerciseName().equals(deadLift.getExerciseName())) {
+                amount++;
+                msg += "DeadLift (Glutes) -- 3s10r\n";
+            }
+            if (e.getExerciseName().equals(barbellSquat.getExerciseName())) {
+                amount++;
+                msg += "Barbell Squat (Quads) -- 4s8r\n";
+            }
+            if (e.getExerciseName().equals(seatedRows.getExerciseName())) {
+                amount++;
+                msg += "Seated Rows (Back) -- 4s8r\n";
+            }
+        }
+        msg += "-----------------\n" + "Total Exercises: " + amount;
+        return msg;
     }
 
 

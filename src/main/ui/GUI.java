@@ -279,9 +279,11 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             loadWorkoutPlan();
-//            desktop.add(new ProfileUI(prof, GUI.this));
+            msg = WorkoutPlan.messageBuilder(workoutPlans);
+            desktop.add(new WorkoutPlanUI(workoutPlans, msg, GUI.this));
         }
     }
+
 
     // **Code Modified from JsonSerializationDemo**
     // EFFECTS: loads workoutPlan from file
