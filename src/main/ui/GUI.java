@@ -1,6 +1,6 @@
 package ui;
 
-import javafx.util.Pair;
+
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonReaderP;
@@ -12,10 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -42,7 +40,6 @@ public class GUI extends JFrame {
     private int amount = 0;
 
 
-    private static final ArrayList<Exercise> WORKOUT_PLAN = new ArrayList<>();
     private static final String JSON_STORE = "./data/workoutplan.json";
     private static final String JSON_STORE_PROF = "./data/profiles.json";
     private JsonWriter jsonWriter;
@@ -53,9 +50,6 @@ public class GUI extends JFrame {
     private static final int WIDTH = 900;
     private static final int HEIGHT = 600;
 
-    //    private String imagePath = "./data/workout planner.jpeg";
-    private String imagePath3 = "./data/wp2.jpg";
-    private String imagePath = "./data/wp2.png";
     private String imageP = "./data/Untitled.png";
 
 

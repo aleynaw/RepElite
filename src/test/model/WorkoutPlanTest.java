@@ -84,10 +84,17 @@ public class WorkoutPlanTest {
         assertEquals("DeadLift", testWorkoutPlan.getWorkoutPlans().get(3).getExerciseName());
     }
 
-//    @Test
-//    void testRemoveFromPlan() {
-//        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan.getWorkoutPlan());
-//        testWorkoutPlan.removeFromPlan();
-//
-//    }
+    @Test
+    void testMessageBuilder() {
+        WorkoutPlan.addExerciseSeatedRows(testWorkoutPlan);
+        WorkoutPlan.addExerciseDeadLift(testWorkoutPlan);
+        WorkoutPlan.addExerciseBarbellSquat(testWorkoutPlan);
+        WorkoutPlan.addExerciseShoulderPress(testWorkoutPlan);
+        assertEquals("Seated Rows (Back) -- 4s8r\n" +
+                "DeadLift (Glutes) -- 3s10r\n" +
+                "Barbell Squat (Quads) -- 4s8r\n" +
+                "Shoulder Press (Shoulders) -- 4s15r\n" +
+                "-----------------\n" +
+                "Total Exercises: 4", WorkoutPlan.messageBuilder(testWorkoutPlan));
+    }
 }
