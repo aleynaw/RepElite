@@ -157,6 +157,7 @@ public class WorkoutPlan implements Writeable {
         return workoutPlan;
     }
 
+    //EFFECTS: builds string msg of complete workout plan with amount of exercises, returns it
     public static String messageBuilder(WorkoutPlan wp) {
         int amount = 0;
         String msg = "";

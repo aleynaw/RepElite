@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+//Graphical Interface
 public class GUI extends JFrame {
     private JDesktopPane desktop;
     private JInternalFrame controlPanel;
@@ -58,6 +58,7 @@ public class GUI extends JFrame {
     }
 
     //**Code modified from AlarmSystem**
+    //EFFECTS: GUI constructor, opens desktop screen, side menu panel of application and its buttons
     public GUI() {
         launchJson();
         launchDesktop();
@@ -79,6 +80,7 @@ public class GUI extends JFrame {
         setVisible(true);
     }
 
+    //EFFECTS: helper function for GUI constructor, launches desktop screen with background logo
     private void launchDesktop() {
         desktop = new JDesktopPane() {
 
@@ -94,6 +96,7 @@ public class GUI extends JFrame {
         desktop.setBackground(Color.white);
     }
 
+    //EFFECTS: JSON initialization
     private void launchJson() {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -102,6 +105,7 @@ public class GUI extends JFrame {
     }
 
     //**Code modified from AlarmSystem**
+    //EFFECTS: adds button panel on the left side of the desktop
     private void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(6, 1));
@@ -118,6 +122,7 @@ public class GUI extends JFrame {
     }
 
     //**Code modified from AlarmSystem**
+    //EFFECTS: centres desktop pane on screen
     private void centreOnScreen() {
         int width = Toolkit.getDefaultToolkit().getScreenSize().width;
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -125,6 +130,8 @@ public class GUI extends JFrame {
     }
 
     //**Code modified from AlarmSystem**
+    //EFFECTS: Create profile action -- creates profile using user input, displays a frame with data printed,
+    // auto saves profile for later loading
     private class CreateProfile extends AbstractAction {
 
         CreateProfile() {
@@ -152,6 +159,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //EFFECTS: loads previously saved profile, displays in new frame with data printed
     private class LoadProfile extends AbstractAction {
 
         LoadProfile() {
@@ -200,6 +208,7 @@ public class GUI extends JFrame {
     }
 
     //**Code modified from AlarmSystem**
+    //EFFECTS: creates new frame with exercise catalogue printed
     private class BrowseExercises extends AbstractAction {
 
         BrowseExercises() {
@@ -220,6 +229,7 @@ public class GUI extends JFrame {
     }
 
     //**Code modified from AlarmSystem**
+    //EFFECTS: initializes planning workout UI
     private class PlanWorkout extends AbstractAction {
 
         PlanWorkout() {
@@ -238,6 +248,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //EFFECTS: saves created workout
     private class SaveWorkout extends AbstractAction {
 
         SaveWorkout() {
@@ -264,6 +275,7 @@ public class GUI extends JFrame {
         }
     }
 
+    //EFFECTS: loads previously saved workout, prints in new frame
     private class LoadWorkout extends AbstractAction {
 
         LoadWorkout() {
@@ -290,6 +302,8 @@ public class GUI extends JFrame {
         }
     }
 
+    //EFFECTS: checkbox pane for selecting workouts to be added to plan, creates new frame
+    // using user input and prints new workout plan
     public class PlanningUI extends JInternalFrame implements ActionListener {
 
         public PlanningUI(WorkoutPlan workoutPlan, Component parent) {

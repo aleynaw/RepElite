@@ -14,6 +14,7 @@ public class ProfileUI extends JInternalFrame {
     private static final int WIDTH = 300;
     private static final int HEIGHT = 200;
 
+    //EFFECTS: takes user input and prints profile data in text area, top right of the desktop
     public ProfileUI(Profile p, Component parent) {
         profileDisplay = new JTextArea(
                 "Your Profile: \n\nName: " + p.getName() + "\n\nAge: " + p.getAge()
@@ -29,6 +30,7 @@ public class ProfileUI extends JInternalFrame {
         setVisible(true);
     }
 
+    //EFFECTS: sets position of internal frame
     private void setPosition(Component parent) {
         setLocation(parent.getWidth() - WIDTH - 50, 0);
     }
