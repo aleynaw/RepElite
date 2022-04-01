@@ -25,8 +25,8 @@ public class SavedProfiles implements Writeable {
 
     }
 
-    //REQUIRES: valid exercise (with name and category)
-    //EFFECTS: adds given exercise to workoutPlan
+    //REQUIRES: valid Profile
+    //EFFECTS: adds given Profile to Profile Array
     public static void addToList(SavedProfiles savedProfiles, Profile profile) {
         savedProfiles.savedProfileArray.add(profile);
     }

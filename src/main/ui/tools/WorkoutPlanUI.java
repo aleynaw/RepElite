@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class WorkoutPlanUI extends JInternalFrame {
     private JTextArea planDisplay;
-    private static final int WIDTH = 300;
+    private static final int WIDTH = 275;
     private static final int HEIGHT = 200;
 
     //EFFECTS: takes workoutplan msg and prints in new text area, bottom left of the desktop
@@ -25,7 +25,7 @@ public class WorkoutPlanUI extends JInternalFrame {
 
     //EFFECTS: sets position of internal frame
     private void setPosition(Component parent) {
-        setLocation(parent.getWidth() - WIDTH - 50, 0);
+        setLocation(parent.getWidth() - WIDTH - 5, 300);
     }
 
 }

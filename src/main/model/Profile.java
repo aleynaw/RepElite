@@ -22,6 +22,8 @@ public class Profile implements Writeable {
         this.age = age;
         this.skillLevel = skillLevel;
         favourites = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("Created a Profile"));
+
     }
 
 

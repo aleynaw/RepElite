@@ -2,6 +2,7 @@ package ui;
 
 
 import model.*;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonReaderP;
 import persistence.JsonWriter;
@@ -63,8 +64,6 @@ public class GUI extends JFrame {
         launchJson();
         launchDesktop();
         savedProfiles = new SavedProfiles("My Profile");
-
-
         controlPanel = new JInternalFrame("Menu", true, false, false, false);
         controlPanel.setPreferredSize(new Dimension(200, HEIGHT - 50));
         controlPanel.setLayout(new BorderLayout());
@@ -75,9 +74,23 @@ public class GUI extends JFrame {
         controlPanel.pack();
         controlPanel.setVisible(true);
         desktop.add(controlPanel);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                EventLog eventLog = EventLog.getInstance();
+                printLog(eventLog);
+                System.exit(0);
+            }
+        });
         centreOnScreen();
         setVisible(true);
+    }
+
+//    @Override
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString() + "\n\n");
+        }
     }
 
     //EFFECTS: helper function for GUI constructor, launches desktop screen with background logo

@@ -39,7 +39,9 @@ public class ExerciseCatalogue {
 
         sortedExercises = catalogue.exercises;
 
+
         return sortedExercises;
+
 
 
     }

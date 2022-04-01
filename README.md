@@ -29,3 +29,26 @@ every time I go just because they are the only ones I can remember.
 - As a user, I want to be able to **load** a saved workout plan from file
 - As a user, I want to be able to have my profile **stored** after creating it
 - As a user, I want to be able to **load** a previously saved profile
+
+##*Phase 4: Task 2*
+
+Thu Mar 31 17:21:26 PDT 2022
+Created a Profile
+
+
+Thu Mar 31 17:21:32 PDT 2022
+Added 'Seated Rows' workout to WorkoutPlan
+
+
+Thu Mar 31 17:21:32 PDT 2022
+Added 'DeadLift' workout to WorkoutPlan
+
+
+Thu Mar 31 17:21:32 PDT 2022
+Added 'Barbell Squat' workout to WorkoutPlan
+
+
+Thu Mar 31 17:21:32 PDT 2022
+Added 'Shoulder Press' workout to WorkoutPlan
+
+

@@ -62,6 +62,7 @@ public class WorkoutPlan implements Writeable {
                 workoutPlans.addToPlan(shoulderPress);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Added 'Shoulder Press' workout to WorkoutPlan"));
 
 //        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
@@ -87,7 +88,7 @@ public class WorkoutPlan implements Writeable {
                 workoutPlans.addToPlan(barbellSquat);
             }
         }
-
+        EventLog.getInstance().logEvent(new Event("Added 'Barbell Squat' workout to WorkoutPlan"));
 //        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
 
@@ -112,6 +113,7 @@ public class WorkoutPlan implements Writeable {
                 workoutPlans.addToPlan(deadLift);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Added 'DeadLift' workout to WorkoutPlan"));
 
 //        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
@@ -137,6 +139,7 @@ public class WorkoutPlan implements Writeable {
                 workoutPlans.addToPlan(seatedRows);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Added 'Seated Rows' workout to WorkoutPlan"));
 
 //        TrackerApp.printWP(workoutPlans.workoutPlan);
     }
@@ -182,6 +185,8 @@ public class WorkoutPlan implements Writeable {
         msg += "-----------------\n" + "Total Exercises: " + amount;
         return msg;
     }
+
+
 
 
     //Below code modified from **JsonSerializationDemo**
