@@ -51,4 +51,11 @@ Added 'Barbell Squat' workout to WorkoutPlan
 Thu Mar 31 17:21:32 PDT 2022
 Added 'Shoulder Press' workout to WorkoutPlan
 
+##*Phase 4: Task 3*
 
+Overall, my biggest change would be with the TrackerApp and GUI relationship. Most of the code in the TrackerApp is
+now irrelevant, so its associations to the JSON classes and the rest of model classes are unnecessary. So I would 
+remove the TrackerApp all together and have my main class instantiate my GUI instead.
+Beyond that, I would also try and find a way to not have to split my JSON classes into two different ones with the same
+functions, or make an interface for my Readers and Writers and just have the separate JSON classes implement it 
+separately. 
